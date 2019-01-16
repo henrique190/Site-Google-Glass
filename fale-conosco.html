@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title> Tudo sobre Google Class</title>
+    <link rel="stylesheet" href="_css/estilo.css">
+    <link rel="stylesheet" href="_css/form.css"/>
+    <script language="JavaScript" src="_javascript/funcoes.js"></script>
+    <script>
+        function calcTotal() {
+            var qtd = parseInt(document.getElementById("cqtd").value);
+            var tot = qtd * 1500;
+            document.getElementById("ctotal").value = tot;
+
+        }
+
+        function processar_dados() {
+            var sexoM = document.getElementById('cmasc').checked;
+            var sexoF = document.getElementById('cfem').checked;
+
+            if(sexoM == true){
+                document.getElementById('cmasc').value = "masculino";
+
+            }   else{
+                document.getElementById('cfem').value = "feminino";
+
+            }
+        }
+
+
+
+    </script>
+</head>
+<body>
+<div id="interface">
+    <HEADER id="cabecalho">
+
+        <hgroup>
+            <h1> Google Glass </h1>
+            <h2> A revolução do Google está chegando </h2>
+        </hgroup>
+
+        <img id="icone" src="_imagens/contato.png">
+
+
+        <nav id="menu">
+            <h1> Menu Principal </h1>
+            <ul>
+                <li onmouseover="mudarFoto('_imagens/home.png')" onmouseout="mudarFoto('_imagens/contato.png')"><a
+                        href="index.html">Home</a></li>
+                <li onmouseover="mudarFoto('_imagens/especificacoes.png')"
+                    onmouseout="mudarFoto('_imagens/contato.png')"><a href="specs.html">Especificações</a></li>
+                <li onmouseover="mudarFoto('_imagens/fotos.png')" onmouseout="mudarFoto('_imagens/contato.png')"><a
+                        href="fotos.html">Fotos</a></li>
+                <li onmouseover="mudarFoto('_imagens/multimidia.png')" onmouseout="mudarFoto('_imagens/contato.png')"><a
+                        href="multimidia.html">Multimídia</a></li>
+                <li onmouseover="mudarFoto('_imagens/contato.png')" onmouseout="mudarFoto('_imagens/contato.png')"><a
+                        href="fale-conosco.html">Fale conosco</a></li>
+            </ul>
+        </nav>
+
+
+    </HEADER>
+
+
+    <section id="corpo-full">
+
+        <article id="noticia-principal">
+            <header id="cabecalho-artigo">
+                <hgroup>
+                    <h3> Fale Conosco > Contato </h3>
+                    <H1> Formulário de Contato </H1>
+                    <H2> por Gustavo Guanabara </H2>
+                    <h3 class="direita"> Atualizado em 01/Maio/2013 </h3>
+                </hgroup>
+            </header>
+
+
+            <form method="post" id="fcontato" action="processa_dados.php" oninput="calcTotal(); processar_dados();">
+
+                <fieldset id="usuario">
+                    <legend>Identificação do Usuário</legend>
+                    <p><label for="cnome">Nome:</label> <input type="text" name="tnome" id="cnome" size="20"
+                                                               maxlength="30" placeholder="Nome completo" required></p>
+                    <p><label for="cpass">Senha:</label> <input type="password" name="tpass" id="cpass" size="8"
+                                                                maxlength="8" placeholder="Oito digitos" required></p>
+                    <p><label for="cemail"> E-mail:</label> <input type="email" name="temail" id="cemail" size="20"
+                                                                   maxlength="30" placeholder="Email"></p>
+                    <fieldset id="sexo">
+                        <legend>Sexo:</legend>
+                        <input type="radio" name="tsexo" id="cmasc" checked><label for="cmasc">- Masculino</label> <br/>
+                        <input type="radio" name="tsexo" id="cfem"><label for="cfem">- Feminino</label>
+                    </fieldset>
+                    <p><label for="cnasc">Data de Nascimento:</label> <input type="date" name="tnasc" id="cnasc" required></p>
+                </fieldset>
+
+                <fieldset id="endereco">
+                    <legend>Endereço do Usuário</legend>
+                    <p><label for="clonga">Logradouro:</label> <input type="text"  name="tlonga" id="clonga" size="13"
+                                                                      placeholder="Rua, AV, Trav..." required>
+                    <p><label for="cnumero">Número:</label> <input type="number" min="0" max="99999" size="3"
+                                                                   name="tnumero" id="cnumero" placeholder="Ex 145" required></p>
+                    <p><label for="cestado">Estado:<select name="testado" id="cestado" required>
+                        <optgroup label="Região Sudeste">
+                            <option selected> São Paulo</option>
+                            <option> Rio Janeiro</option>
+                            <option> Minas Gerais</option>
+                        </optgroup>
+                        <optgroup label="Região Sul">
+                            <option> Parana</option>
+                            <option> Santa Catarina</option>
+                            <option> Rio Grande do Sul</option>
+                        </optgroup>
+
+                    </select></label></p>
+
+                    <p><label for="ccidade">Cidade:</label>
+                        <input type="text" name="tcidade" id="ccidade" size="20" placeholder="Cidade" list="cidades" required>
+                    </p>
+                    <datalist id="cidades">
+                        <option value="Rio Janeiro"></option>
+                        <option value="Nova Iguaçu"></option>
+                        <option value="Nitoroi"></option>
+                    </datalist>
+                </fieldset>
+
+                <fieldset id="mensagem">
+                    <legend> Mensagem do Usuário</legend>
+                    <p><label for="curg">Grau de Urgência:</label>Min
+                        <input type="range" min="0" max="10" step="2" name="turg" id="curg">Max</p>
+                    <p><label for="cmen">Mensagem:</label>
+                        <textarea name="tmen" id="cmen" cols="35" rows="5"
+                                  placeholder="Deixe aqui sua mensagem." required></textarea></p>
+                </fieldset>
+
+                <fieldset id="pedido">
+                    <legend>Quero um Google Glass</legend>
+                    <p>
+                        <input type="checkbox" name="tped" id="cped">
+                        <label for="cped">Gostaria de adquirir um Google Glass quando disponível</label></p>
+                    <p><label for="ccor">Cor:</label>
+                    <input type="color" name="tcor" id="ccor"></p>
+                    <p><label for="cqtd">Quantidade:</label>
+                    <input type="number" name="tqtd" id="cqtd" min="0" max="5" value="0"></p>
+                    <p> <label for="ctotal">Preço Total: R$</label>
+                    <input type="text" name="ttotal" id="ctotal" placeholder="Total a pagar." readonly> </p>
+
+                </fieldset>
+
+                <input type="image" src="_imagens/botao-enviar.png" value="submit" id="cenviar" name = "tenviar" formtarget="_blank" onclick="processar_dados();
+                validarCampos();">
+
+            </form>
+
+        </article>
+
+    </section>
+
+    <footer id="rodape">
+        <p> Copyright 2013 - by Gustavo Guanabara <br/>
+            <a href="http://facebook.com.br/henrique190" target="_blank"> Facebook </a> |
+            <a href="http://twitter.com.br/henrique190" target="_blank"> Twitter </a></p>
+    </footer>
+</div>
+</body>
